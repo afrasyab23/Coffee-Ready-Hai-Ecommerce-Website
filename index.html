@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roast Index — Single-origin coffee, sourced weekly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div>
+        <h1 class="logo">Coffee Ready Hai</h1>
+        <p class="tagline">By Afrasiyab Haider</p>
+      </div>
+      <button id="cart-toggle" class="bag-btn">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Bag
+        <span id="cart-count" class="cart-count hidden">0</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- Sidebar filters -->
+    <aside class="sidebar">
+      <div class="sidebar-sticky">
+        <div class="sidebar-head">
+          <h2 class="eyebrow">Filter</h2>
+          <button id="clear-filters" class="link-btn hidden">Clear</button>
+        </div>
+
+        <div id="filter-origin" class="filter-group"></div>
+        <div id="filter-process" class="filter-group"></div>
+        <div id="filter-roast" class="filter-group"></div>
+
+        <div class="price-block">
+          <h4 class="eyebrow">Max Price — <span id="price-label" class="price-value">$25.00</span></h4>
+          <input id="price-range" type="range" min="10" max="25" step="0.25" value="25" />
+          <div class="price-range-labels">
+            <span>$10</span>
+            <span>$25</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main grid -->
+    <main class="main">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <svg class="icon search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input id="search-input" type="text" placeholder="Search beans or tasting notes" />
+        </div>
+
+        <div class="sort-wrap">
+          <span class="eyebrow">Sort</span>
+          <select id="sort-select">
+            <option value="relevance">Relevance</option>
+            <option value="price-asc">Price: low to high</option>
+            <option value="price-desc">Price: high to low</option>
+            <option value="roast-light">Roast: light to dark</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="result-count" class="result-count"></p>
+
+      <div id="empty-state" class="empty-state hidden">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+        <p>No beans match those filters.</p>
+        <button id="empty-clear" class="link-btn">Clear filters</button>
+      </div>
+
+      <div id="product-grid" class="product-grid"></div>
+    </main>
+  </div>
+
+  <!-- Cart drawer -->
+  <div id="cart-overlay" class="cart-overlay hidden">
+    <div id="cart-backdrop" class="cart-backdrop"></div>
+    <div class="cart-drawer">
+      <div class="cart-head">
+        <h2 class="cart-title">Your bag</h2>
+        <button id="cart-close" aria-label="Close cart">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <div id="cart-body" class="cart-body"></div>
+
+      <div id="cart-footer" class="cart-footer hidden">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        <button class="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
